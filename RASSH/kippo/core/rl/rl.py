@@ -14,9 +14,12 @@ import threading
 
 class RL:
     def __init__(self):
+	#The agent has a controller (which will map the states to actions) and a learner.
+	#Controller av_table have states and convert them into actions
+	#ActionValueTable need 2 inputs : 4 states and 5 actions
 	self.av_table = ActionValueTable(4, 5)
 	self.av_table.initialize(0.1)
-
+	#Create a learner
 	learner = SARSA()
 	learner._setExplorer(EpsilonGreedyExplorer(0.0))
 	self.agent = LearningAgent(self.av_table, learner)
