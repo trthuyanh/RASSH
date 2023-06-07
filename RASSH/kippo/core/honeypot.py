@@ -155,6 +155,7 @@ class HoneyPotShell(object):
 
     def lineReceived(self, line):
         print 'CMD: %s' % line
+	#Save cmds if exit ";" 
         for i in [x.strip() for x in line.strip().split(';')]:
             if not len(i):
                 continue
